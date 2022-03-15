@@ -9,15 +9,15 @@ class Solution:
         if root is None :
             return []
         
-        answer = []
+        result = []
         # in-order traversal
         def inorder(node) :
             if node :
                 inorder(node.left)
-                answer.append(node.val)
+                result.append(node.val)
                 inorder(node.right)
         
         inorder(root)
         
-        return answer[k-1]
+        return result[k-1]
         
