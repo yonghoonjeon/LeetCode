@@ -25,6 +25,6 @@ class Solution:
         # balance check
         if (abs(lh - rh) <= 1) and self.isBalanced(root.left) and self.isBalanced(root.right):
             return True
-        
-        return False
+        else:
+            return False
         
