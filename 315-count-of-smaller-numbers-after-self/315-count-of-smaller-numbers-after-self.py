@@ -1,5 +1,5 @@
 class Solution:
-    def countSmaller(self, nums: List[int]) -> List[int]:
+    def countSmaller(self, nums: [int]) -> [int]:
         def new(val):
             node = TreeNode(val)
             node.size = 0
@@ -31,24 +31,29 @@ class Solution:
             return node != None and node.color
 
         def insert(root,node):
+            # root is empty
             if root == None:
                 return node,node.size
-
+            
             if node.val == root.val:
                 root.count += 1
                 return root,root.size
-
+            
             if node.val < root.val:
                 root.size += 1
                 root.left,size = insert(root.left,node)
-            else: # node.val > root.val:
+            # node.val > root.val:
+            else: 
                 root.right,size = insert(root.right,node)
                 size += (root.size + root.count)
-
+            
+            # right sub-tree is red
             if red(root.right) and not red(root.left):
                 root = rotate_left(root)
+            # consecutive red edges on left sub-tree
             if red(root.left) and red(root.left.left):
                 root = rotate_right(root)
+            # both sub-trees are red
             if red(root.left) and red(root.right):
                 root = flip(root)
 
@@ -57,6 +62,7 @@ class Solution:
 
         ret,root = [0 for _ in nums],None
         for i in range(len(nums)-1,-1,-1):
-            root,size = insert(root,new(nums[i]))
+            node = new(nums[i])
+            root,size = insert(root, node)
             ret[i] = size
         return ret        
