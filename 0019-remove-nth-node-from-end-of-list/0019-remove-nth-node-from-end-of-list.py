@@ -32,7 +32,8 @@ class Solution:
         # else case
         node_before = head
         for _ in range(length - n - 1):
-            node_before = node_before.next        
+            node_before = node_before.next     
+        # deletion
         node_before.next = node_before.next.next
         
         return head        
