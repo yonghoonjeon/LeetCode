@@ -8,7 +8,7 @@ class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         """
         Ref: https://velog.io/@ilov1112/Leetcode-141.-Linked-List-Cycle-with-Python
-        """
+        """            
         tortoise = head
         hare = head
         while tortoise != None and hare != None:
